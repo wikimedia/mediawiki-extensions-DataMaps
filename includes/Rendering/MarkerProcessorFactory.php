@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\DataMaps\Rendering;
 use MapCacheLRU;
 use MediaWiki\Extension\DataMaps\Data\DataMapSpec;
 use MediaWiki\Extension\DataMaps\ExtensionConfig;
+use MediaWiki\Languages\LanguageConverterFactory;
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserFactory;
 use MediaWiki\Parser\ParserOptions;
@@ -16,7 +17,8 @@ final class MarkerProcessorFactory {
 
     public function __construct(
         private readonly ParserFactory $parserFactory,
-        private readonly ExtensionConfig $config
+        private readonly LanguageConverterFactory $languageConverterFactory,
+        private readonly ExtensionConfig $config,
     ) {
     }
 
@@ -67,7 +69,8 @@ final class MarkerProcessorFactory {
             $lru,
             $title,
             $dataMap,
-            $filter
+            $filter,
+            $this->languageConverterFactory->getLanguageConverter(),
         );
     }
 

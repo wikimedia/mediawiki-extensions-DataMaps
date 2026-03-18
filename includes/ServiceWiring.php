@@ -36,6 +36,7 @@ return [
     ): MarkerProcessorFactory {
         return new MarkerProcessorFactory(
             $services->getParserFactory(),
+            $services->getLanguageConverterFactory(),
             $services->get( ExtensionConfig::SERVICE_NAME ),
         );
     },

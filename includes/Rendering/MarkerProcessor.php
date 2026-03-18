@@ -8,6 +8,7 @@ use MediaWiki\Extension\DataMaps\Data\MarkerGroupSpec;
 use MediaWiki\Extension\DataMaps\Data\MarkerSpec;
 use MediaWiki\Extension\DataMaps\ExtensionConfig;
 use MediaWiki\Extension\DataMaps\Rendering\Utils\DataMapFileUtils;
+use MediaWiki\Language\ILanguageConverter;
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Title\Title;
@@ -30,7 +31,8 @@ class MarkerProcessor {
         private readonly ?MapCacheLRU $localParserCache,
         private readonly Title $title,
         private readonly DataMapSpec $dataMap,
-        private readonly ?array $filter
+        private readonly ?array $filter,
+        private readonly ILanguageConverter $languageConverter,
     ) {
         $this->isSearchEnabled = $this->dataMap->getSettings()->getSearchMode() !== MapSettingsSpec::SM_NONE;
     }
@@ -170,6 +172,7 @@ class MarkerProcessor {
                 'includeDebugInfo' => false
             ] )
             ->getContentHolderText();
+        $out = $this->languageConverter->convert( $out );
         // Mark as clean to avoid clearing state again
         $this->isParserDirty = false;
 
@@ -187,6 +190,7 @@ class MarkerProcessor {
         }
 
         $result = wfEscapeWikiText( trim( $text ) );
+        $result = $this->languageConverter->convert( $result );
         $result = '<p>' . preg_replace( '/(\n&#10;)+/', '</p><p>', $result ) . '</p>';
         return $result;
     }

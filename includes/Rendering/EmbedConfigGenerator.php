@@ -14,6 +14,7 @@ use MediaWiki\Extension\DataMaps\Rendering\Utils\DataMapColourUtils;
 use MediaWiki\Extension\DataMaps\Rendering\Utils\DataMapFileUtils;
 use MediaWiki\Html\Html;
 use MediaWiki\Json\FormatJson;
+use MediaWiki\Language\ILanguageConverter;
 use MediaWiki\Title\Title;
 
 class EmbedConfigGenerator {
@@ -21,15 +22,16 @@ class EmbedConfigGenerator {
     public const LEGEND_ICON_WIDTH = 24;
     public const NUMBER_OF_MARKERS_FOR_CANVAS = 500;
 
-    public DataMapSpec $data;
-    private Title $title;
     private bool $useInlineData;
     private bool $forVisualEditor;
     private ?array $requireLayers;
 
-    public function __construct( Title $title, DataMapSpec $data, array $options ) {
-        $this->title = $title;
-        $this->data = $data;
+    public function __construct(
+        private readonly Title $title,
+        public readonly DataMapSpec $data,
+        array $options,
+        private readonly ILanguageConverter $languageConverter,
+    ) {
         $this->useInlineData = $options['inlineData'] ?? false;
         $this->forVisualEditor = $options['ve'] ?? false;
 
@@ -52,6 +54,10 @@ class EmbedConfigGenerator {
             ],
             FormatJson::encode( $this->makeArray(), false, FormatJson::UTF8_OK )
         );
+    }
+
+    private function languageConvert( string $text ): string {
+        return $this->languageConverter->convert( wfEscapeWikiText( $text ) );
     }
 
     public function makeArray(): array {
@@ -109,7 +115,7 @@ class EmbedConfigGenerator {
         // Disclaimer in the filters panel
         if ( $this->data->getDisclaimerText() !== null ) {
             // TODO: No parser support yet; after GH#165
-            $out['disclaimer'] = $this->data->getDisclaimerText();
+            $out['disclaimer'] = $this->languageConvert( $this->data->getDisclaimerText() );
         }
         // Custom Leaflet settings
         if ( $this->data->getSettings()->getCustomLeafletConfig() != null ) {
@@ -168,7 +174,7 @@ class EmbedConfigGenerator {
         }
         $name = $spec->getName();
         if ( $name ) {
-            $out['name'] = $name;
+            $out['name'] = $this->languageConvert( $name );
         }
         if ( $spec->getPlacementLocation() !== null ) {
             $out['at'] = CoordinateSystem::normaliseBox( $spec->getPlacementLocation(), $coordOrder );
@@ -209,7 +215,7 @@ class EmbedConfigGenerator {
     private function convertBackgroundOverlay( MapBackgroundOverlaySpec $spec, int $coordOrder ) {
         $result = [];
         if ( $spec->getName() != null ) {
-            $result['name'] = $spec->getName();
+            $result['name'] = $this->languageConvert( $spec->getName() );
         }
         if ( $spec->getImageName() != null ) {
             $image = DataMapFileUtils::getRequiredFile( $spec->getImageName() );
@@ -282,7 +288,7 @@ class EmbedConfigGenerator {
 
     public function getMarkerGroupConfig( MarkerGroupSpec $spec ): array {
         $out = [
-            'name' => $spec->getName(),
+            'name' => $this->languageConvert( $spec->getName() ),
             'size' => $spec->getSize(),
         ];
 
@@ -293,7 +299,7 @@ class EmbedConfigGenerator {
 
         if ( $spec->getDescription() !== null ) {
             // TODO: No parser support yet; after GH#165
-            $out['description'] = $spec->getDescription();
+            $out['description'] = $this->languageConvert( $spec->getDescription() );
         }
 
         switch ( $spec->getDisplayMode() ) {

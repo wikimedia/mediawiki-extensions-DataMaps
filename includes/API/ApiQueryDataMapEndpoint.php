@@ -141,10 +141,10 @@ class ApiQueryDataMapEndpoint extends ApiBase {
         return $revision;
     }
 
-    public static function makeKey( Title $title, int $revid = -1 ) {
+    public static function makeKey( Title $title, int $revid = -1, string|null $langCode = null ): string {
         $config = MediaWikiServices::getInstance()->get( ExtensionConfig::SERVICE_NAME );
         return ObjectCache::getInstance( $config->getApiCacheType() )
-            ->makeKey( self::CACHE_NAMESPACE, self::GENERATION, $title->getId(), $revid );
+            ->makeKey( self::CACHE_NAMESPACE, self::GENERATION, $title->getId(), $revid, $langCode );
     }
 
     private function doProcessingCached( $params ): array {
@@ -158,7 +158,8 @@ class ApiQueryDataMapEndpoint extends ApiBase {
 
         // Build the cache key from an identifier, page ID and revision ID parameter
         $revid = isset( $params['revid'] ) ? $params['revid'] : -1;
-        $cacheKey = self::makeKey( $title, $revid );
+        $langCode = $this->getLanguage()->getCode();
+        $cacheKey = self::makeKey( $title, $revid, $langCode );
 
         // Try to retrieve the response
         $response = $cache->get( $cacheKey );

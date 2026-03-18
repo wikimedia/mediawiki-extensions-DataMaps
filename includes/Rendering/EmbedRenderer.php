@@ -156,7 +156,9 @@ class EmbedRenderer {
     }
 
     public function getHtml( EmbedRenderOptions $options ): string {
-        $titleFormatter = MediaWikiServices::getInstance()->getTitleFormatter();
+        $services = MediaWikiServices::getInstance();
+        $titleFormatter = $services->getTitleFormatter();
+        $languageConverter = $services->getLanguageConverterFactory()->getLanguageConverter();
 
         // Primary slots
         $containerMain = new PanelLayout( [
@@ -246,7 +248,7 @@ class EmbedRenderer {
             'inlineData' => $this->useInlineData,
             've' => $this->forVisualEditor,
             'layers' => $options ? $options->displayGroups : null
-        ] );
+        ], $languageConverter );
         $containerMain->appendContent( new HtmlSnippet( $config->makeElement() ) );
 
         if ( $this->useInlineData ) {

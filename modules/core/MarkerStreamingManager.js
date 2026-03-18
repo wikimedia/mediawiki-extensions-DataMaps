@@ -23,7 +23,8 @@ module.exports = class MarkerStreamingManager {
      */
     callApiUnreliable( options ) {
         return this.mwApi.get( $.extend( {
-            action: 'queryDataMap'
+            action: 'queryDataMap',
+            uselang: mw.config.get('wgPageContentLanguage'),
         }, options ) ).then(
             data => data.error ? Promise.reject( data.error ) : Promise.resolve( data ),
             reason => Promise.reject( reason )
