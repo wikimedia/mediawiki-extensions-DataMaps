@@ -56,7 +56,7 @@ class Background extends EventEmitter {
         /**
          * Tile offset
          *
-         * @type {array?}
+         * @type {Array?}
          */
         this.tileOffset = config.tileOffset || null;
 
@@ -64,7 +64,7 @@ class Background extends EventEmitter {
          * Tile size
          *
          * @private
-         * @type {array?}
+         * @type {Array?}
          */
         this._physicalTileSize = config.tileSize || null;
 
@@ -148,11 +148,14 @@ class Background extends EventEmitter {
      */
     _compileTileData( tiles ) {
         const [ tileY, tileX ] = this._physicalTileSize;
-        let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+        let minX = Infinity,
+            minY = Infinity,
+            maxX = -Infinity,
+            maxY = -Infinity;
 
-        const map = tiles.reduce( ( map, tile ) => {
+        const map = tiles.reduce( ( finalMap, tile ) => {
             const [ y, x ] = tile.position;
-            map[ `${y},${x}` ] = tile.image;
+            finalMap[ `${y},${x}` ] = tile.image;
 
             // Update boundary tracking
             minX = Math.min( x, minX );
@@ -160,7 +163,7 @@ class Background extends EventEmitter {
             maxX = Math.max( x, maxX );
             maxY = Math.max( y, maxY );
 
-            return map;
+            return finalMap;
         }, {} );
 
         maxX++;
@@ -182,7 +185,7 @@ class Background extends EventEmitter {
 
         // Create a map of positions to tiles for a fast lookup of image URLs
         const [ bounds, imageLut, maxY ] = this._compileTileData( tiles );
-        const imageLookup = ( coords ) => {
+        const imageLookup = coords => {
             // If origin point is in the bottom-left corner, invert the Y position here
             let y = coords.y;
             if ( this.map.crs.origin === CRSOrigin.BottomLeft ) {
@@ -214,7 +217,7 @@ class Background extends EventEmitter {
             tileSize: Leaflet.point( this._physicalTileSize ),
             // Use physical tile size for canvas dimensions
             physicalWidth: this._physicalTileSize[ 1 ],
-            physicalHeight: this._physicalTileSize[ 0 ],
+            physicalHeight: this._physicalTileSize[ 0 ]
         } );
     }
 

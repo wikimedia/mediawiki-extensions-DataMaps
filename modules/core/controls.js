@@ -5,7 +5,7 @@ const {
     createCdxIconElement,
     getNonNull,
     preventMapInterference,
-    TabberNeue,
+    TabberNeue
 } = require( './Util.js' );
 const CodexIcon = require( './icons.json' );
 
@@ -280,7 +280,7 @@ class EditButton extends MapControl {
 
 /**
  * View reset and centre buttons.
-*/
+ */
 class ZoomControls extends MapControl {
     /**
      * @param {DataMap} map Owning map.
@@ -306,7 +306,7 @@ class ZoomControls extends MapControl {
             clickHandler: () => viewport.zoomNSteps( -1 )
         } );
 
-		viewport.getLeafletMap().on( 'zoomend zoomlevelschange', this._updateDisabled, this );
+        viewport.getLeafletMap().on( 'zoomend zoomlevelschange', this._updateDisabled, this );
         this._updateDisabled();
     }
 
@@ -324,7 +324,7 @@ class ZoomControls extends MapControl {
 
 /**
  * View reset and centre buttons.
-*/
+ */
 class ViewControls extends MapControl {
     /**
      * @param {DataMap} map Owning map.
@@ -421,6 +421,7 @@ class SearchHost extends MapControl {
 
 
     /**
+     * @param canFocus
      * @private
      */
     _loadSearch( canFocus ) {

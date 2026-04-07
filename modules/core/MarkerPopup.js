@@ -133,8 +133,14 @@ module.exports = class MarkerPopup {
                     'cdx-button--weight-quiet',
                     'cdx-button--size-medium',
                     'cdx-button--icon-only',
-                    `ext-datamaps-popup-button`,
+                    'ext-datamaps-popup-button',
+                    // Following classes used here:
+                    // * ext-datamaps-popup-button--link
+                    // * ext-datamaps-popup-button--close
                     `ext-datamaps-popup-button--${id}`,
+                    // Following classes used here:
+                    // * ext-datamaps-popup-link
+                    // * ext-datamaps-popup-close
                     `ext-datamaps-popup-${id}`
                 ],
                 attributes: {
@@ -160,7 +166,7 @@ module.exports = class MarkerPopup {
                 CodexIcon.cdxIconLink,
                 () => {
                     const /** @type {string} */ href = Util.makeUrlWithParams( this.map, { marker: this.uid }, true );
-                    // eslint-disable-next-line compat/compat
+
                     navigator.clipboard.writeText( href )
                         .then( () => mw.notify( mw.msg( 'datamap-popup-marker-link-copied' ) ) );
                 }
@@ -291,7 +297,7 @@ module.exports = class MarkerPopup {
                 buttonElement.prepend( Util.createCdxIconElement( svgIcon, 'small' ) );
             }
 
-            if ( typeof( clickHandler ) === 'string' ) {
+            if ( typeof ( clickHandler ) === 'string' ) {
                 return createDomElement( 'a', {
                     attributes: {
                         href: clickHandler
@@ -307,7 +313,7 @@ module.exports = class MarkerPopup {
                 element.append( buttonElement );
             }
 
-            return buttonElement
+            return buttonElement;
         };
 
         // Related article

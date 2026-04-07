@@ -30,7 +30,10 @@ class MapSettingsSpec extends DataModel {
         return $this->raw->enableTooltipPopups ?? false;
     }
 
-    public function getRawBackdropColour() /*: ?array|string*/ {
+    /**
+     * @return ?array|string
+     */
+    public function getRawBackdropColour() {
         return isset( $this->raw->backdropColor ) ? $this->raw->backdropColor : null;
     }
 

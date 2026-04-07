@@ -174,7 +174,6 @@
 				"datamap-legend-tab-progress",
 				"datamap-toggle-show-all",
 				"datamap-toggle-hide-all",
-				"datamap-toggle-caves",
 				"datamap-layer-control",
 				"datamap-layer-surface",
 				"datamap-layer-cave",
@@ -263,8 +262,7 @@
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
 				"mediawiki.widgets",
-				"mediawiki.Uri",
-				"ext.datamaps.ve.icons"
+				"mediawiki.Uri"
 			],
 			"packageFiles": [
 				"createMap/main.js",
@@ -277,13 +275,10 @@
 				}
 			],
 			"styles": [
-				"ve/css/collapsibles.less",
 				"createMap/css/all.less"
 			],
 			"messages": [
-				"datamap-vec-beta-notice",
-
-				"datamap-ve-cancel",
+				"datamap-ve-beta-notice",
 				"datamap-ve-skip",
 				"datamap-vec-title",
 				"datamap-vec-intro",
@@ -340,7 +335,7 @@
 	"ContentHandlers": {
 		"datamap": "MediaWiki\\Extension\\DataMaps\\Content\\DataMapContentHandler"
 	},
-	
+
 	"callback": "MediaWiki\\Extension\\DataMaps\\Hooks\\ContentModelHooks::onRegistration",
 	"Hooks": {
 		"ParserFirstCallInit": "MainHandler",

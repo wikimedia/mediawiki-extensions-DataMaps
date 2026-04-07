@@ -29,7 +29,7 @@ class DebugControl extends MapControl {
         for ( const event of [
             'backgroundChange',
             'markerVisibilityUpdate',
-            'chunkStreamed',
+            'chunkStreamed'
         ] ) {
             this.map.on(
                 event,
@@ -69,10 +69,10 @@ class DebugControl extends MapControl {
                     color: '#f0f',
                     weight: 1,
                     dashArray: '8',
-                    fill: false,
+                    fill: false
                 }
             );
-            this._rect.addTo( getNonNull( this.map.viewport ).getLeafletMap() )
+            this._rect.addTo( getNonNull( this.map.viewport ).getLeafletMap() );
         }
 
         this._rect.setBounds( this.map.getCurrentContentBounds() );

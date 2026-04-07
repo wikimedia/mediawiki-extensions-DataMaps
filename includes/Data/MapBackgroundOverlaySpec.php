@@ -49,7 +49,10 @@ class MapBackgroundOverlaySpec extends DataModel {
         return $this->getType() != self::TYPE_IMAGE;
     }
 
-    public function getRawFillColour() /*: ?array|string*/ {
+    /**
+     * @return ?array|string
+     */
+    public function getRawFillColour() {
         return isset( $this->raw->color ) ? $this->raw->color : null;
     }
 
@@ -61,7 +64,10 @@ class MapBackgroundOverlaySpec extends DataModel {
         return isset( $this->raw->thickness ) ? $this->raw->thickness : null;
     }
 
-    public function getRawRectStrokeColour() /*: ?array|string*/ {
+    /**
+     * @return ?array|string
+     */
+    public function getRawRectStrokeColour() {
         return isset( $this->raw->borderColor ) ? $this->raw->borderColor : null;
     }
 

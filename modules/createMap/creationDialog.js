@@ -137,7 +137,7 @@ CreationDialog.prototype.initialize = function () {
                                 expanded: false,
                                 classes: [ 'datamap-collapsible' ],
                                 content: [
-                                    this.$extraCheckbox = $( '<input type="checkbox" />' ),
+                                    this.$extraCheckbox = $( '<input>' ).attr( 'type', 'checkbox' ),
                                     new OO.ui.LabelWidget( {
                                         label: mw.msg( 'datamap-vec-extra-options' )
                                     } ),

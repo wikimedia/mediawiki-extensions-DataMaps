@@ -19,7 +19,8 @@ final class ContentModelHooks implements
         define( 'CONTENT_MODEL_DATAMAPS', 'datamap' );
         define( 'CONTENT_MODEL_DATAMAPS_FANDOM_COMPAT', 'interactivemap' );
 
-        global $wgContentHandlers, $wgDataMapsNamespaceId, $wgDataMapsAllowExperimentalFeatures, $wgDataMapsEnableFandomPortingTools;
+        global $wgContentHandlers, $wgDataMapsNamespaceId,
+           $wgDataMapsAllowExperimentalFeatures, $wgDataMapsEnableFandomPortingTools;
         if ( $wgDataMapsAllowExperimentalFeatures && $wgDataMapsEnableFandomPortingTools && $wgDataMapsNamespaceId === 2900 ) {
             $wgContentHandlers[CONTENT_MODEL_DATAMAPS_FANDOM_COMPAT] = FandomMapContentHandler::class;
         }

@@ -129,15 +129,17 @@ module.exports = class EventEmitter {
     }
 
 
+    /* eslint-disable jsdoc/no-undefined-types */
     /**
      * @template {Extract<keyof Signatures, string>} EventId
      * @param {EventId} event
-     * @param {InstanceType<EventEmitter>} target
+     * @param {InstanceType<typeof EventEmitter>} target
      */
     createEventProxyOn( event, target ) {
         this.on( event, function forwardedEventCall( ...params ) {
             const fireMethod = this._autoFiringEvents[ event ] ? 'fireMemorised' : 'fire';
-            target[ fireMethod ].apply( target, [ event, ...params ] );
+            target[ fireMethod ]( event, ...params );
         }, this );
     }
+    /* eslint-enable jsdoc/no-undefined-types */
 };

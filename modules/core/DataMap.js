@@ -1,4 +1,4 @@
-const CoordinateSystemNew = require('./CoordinateSystemNew.js');
+const CoordinateSystemNew = require( './CoordinateSystemNew.js' );
 const
     MapStorage = require( './MapStorage.js' ),
     { MapFlags, MarkerGroupFlags, PresentationFlags } = require( './enums.js' ),
@@ -71,6 +71,7 @@ class DataMap extends EventEmitter {
         this._flags = config.flags | ( this._embedConfig.presentationFlags || 0 );
         /**
          * Coordinate system specification.
+         *
          * @type {CoordinateSystem}
          */
         this.crs = this.checkFeatureFlag( MapFlags.Coordinates3 )
@@ -343,7 +344,7 @@ class DataMap extends EventEmitter {
 
 
     /**
-     * @param {boolean} value 
+     * @param {boolean} value
      */
     setFullScreen( value ) {
         if ( value && this._fullScreenAnchor === null ) {

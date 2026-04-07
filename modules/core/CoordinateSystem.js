@@ -3,7 +3,7 @@ const { CoordinateDisplayStyle, CRSOrigin } = require( './enums.js' ),
 
 
 module.exports = class CoordinateSystem {
-    constructor ( box, order, angle ) {
+    constructor( box, order, angle ) {
         this.topLeft = box[ 0 ];
         this.bottomRight = box[ 1 ];
         this.origin = ( this.topLeft[ 0 ] < this.bottomRight[ 0 ]
@@ -106,9 +106,9 @@ module.exports = class CoordinateSystem {
                     : ''
         );
         // Messages that can be used here:
-        // - datamap-coordinate-control-text-xy
-        // - datamap-coordinate-control-text-yx
-        // - datamap-coordinate-control-text
+        // * datamap-coordinate-control-text-xy
+        // * datamap-coordinate-control-text-yx
+        // * datamap-coordinate-control-text
         return mw.msg( message, lat.toFixed( 2 ), /** @type {number} */ ( lon ).toFixed( 2 ) );
     }
 };

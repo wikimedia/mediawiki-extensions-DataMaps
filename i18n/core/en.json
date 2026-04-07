@@ -96,5 +96,10 @@
     "datamap-control-search-toggle-sharing": "All maps",
     "datamap-control-search-no-results": "No results found.",
     "datamap-control-fullscreen": "Toggle fullscreen mode",
-    "prefs-datamaps": "Interactive Maps display options"
+    "prefs-datamaps": "Interactive Maps display options",
+    "apihelp-query-data-map-summary": "Query information about an interactive map.",
+    "apihelp-query-data-map-param-pageid": "The page of the map.",
+    "apihelp-query-data-map-param-revid": "The revision of the map.",
+    "apihelp-query-data-map-param-layers": "The layers to get.",
+    "apihelp-query-data-map-param-limit": "The maximum amount of markers to get."
 }

@@ -2,7 +2,7 @@
 	"name": "DataMaps",
 	"private": true,
 	"scripts": {
-		"test": "npm run lint:js && npm run lint:styles",
+		"test": "grunt test",
 		"lint:js": "eslint --cache --max-warnings 0 .",
 		"lint:styles": "stylelint --cache \"**/*.{less,css}\"",
 		"schema": "ts-json-schema-generator --path \"schemas/src/**/*.ts\" --strict-tuples --type DataMap -o schemas/generated.json"
@@ -13,8 +13,12 @@
 		"@typescript-eslint/parser": "^5.50.0",
 		"eslint-config-wikimedia": "^0.24.0",
 		"eslint-plugin-deprecation": "^1.3.3",
+		"grunt": "1.6.1",
+		"grunt-banana-checker": "0.13.0",
+		"grunt-eslint": "24.3.0",
+		"grunt-stylelint": "0.20.1",
 		"stylelint-config-idiomatic-order": "9.0.0",
-		"stylelint-config-wikimedia": "0.13.1",
+		"stylelint-config-wikimedia": "0.18.0",
 		"ts-json-schema-generator": "^1.2.0",
 		"types-mediawiki": "^1.3.0"
 	}

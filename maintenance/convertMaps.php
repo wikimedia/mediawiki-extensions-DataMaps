@@ -1,16 +1,24 @@
 <?php
+use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Extension\DataMaps\Content\DataMapContent;
 use MediaWiki\Extension\DataMaps\Content\SchemaProvider;
 use MediaWiki\Extension\DataMaps\Rendering\Utils\DataMapFileUtils;
+use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\User\User;
+use Wikimedia\Rdbms\IMaintainableDatabase;
+use Wikimedia\Rdbms\LBFactory;
 
 require_once __DIR__ . '/../../../maintenance/Maintenance.php';
 
 class ConvertMaps extends Maintenance {
+    /** @var IMaintainableDatabase */
     private $dbw;
+    /** @var LBFactory */
     private $lbFactory;
+    /** @var User */
     private $commitUser;
 
     public function __construct() {

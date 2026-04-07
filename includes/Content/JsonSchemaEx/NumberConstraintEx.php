@@ -22,20 +22,44 @@ class NumberConstraintEx extends NumberConstraint {
             // Draft 4 schema
             if ( isset( $schema->minimum ) ) {
                 if ( $schema->exclusiveMinimum && $element <= $schema->minimum ) {
-                    $this->addError( $path, 'Must have a minimum value of ' . $schema->minimum, 'exclusiveMinimum', [ 'minimum' => $schema->minimum ] );
+                    $this->addError(
+                        $path,
+                        'Must have a minimum value of ' . $schema->minimum,
+                        'exclusiveMinimum',
+                        [ 'minimum' => $schema->minimum ]
+                    );
                 } elseif ( $element < $schema->minimum ) {
-                    $this->addError( $path, 'Must have a minimum value of ' . $schema->minimum, 'minimum', [ 'minimum' => $schema->minimum ] );
+                    $this->addError(
+                        $path,
+                        'Must have a minimum value of ' . $schema->minimum,
+                        'minimum',
+                        [ 'minimum' => $schema->minimum ]
+                    );
                 }
             } else {
-                $this->addError( $path, 'Use of exclusiveMinimum requires presence of minimum', 'missingMinimum' );
+                $this->addError(
+                    $path,
+                    'Use of exclusiveMinimum requires presence of minimum',
+                    'missingMinimum'
+                );
             }
         } elseif ( isset( $schema->exclusiveMinimum ) && filter_var( $schema->exclusiveMinimum, FILTER_VALIDATE_INT ) ) {
             // Draft 6 schema
             if ( $element <= $schema->exclusiveMinimum ) {
-                $this->addError( $path, 'Must have a minimum value of' . $schema->exclusiveMinimum, 'exclusiveMinimum', [ 'minimum' => $schema->exclusiveMinimum ] );
+                $this->addError(
+                    $path,
+                    'Must have a minimum value of' . $schema->exclusiveMinimum,
+                    'exclusiveMinimum',
+                    [ 'minimum' => $schema->exclusiveMinimum ]
+                );
             }
         } elseif ( isset( $schema->minimum ) && $element < $schema->minimum ) {
-            $this->addError( $path, 'Must have a minimum value of ' . $schema->minimum, 'minimum', [ 'minimum' => $schema->minimum ] );
+            $this->addError(
+                $path,
+                'Must have a minimum value of ' . $schema->minimum,
+                'minimum',
+                [ 'minimum' => $schema->minimum ]
+            );
         }
 
         // Verify maximum
@@ -43,30 +67,64 @@ class NumberConstraintEx extends NumberConstraint {
             // Draft 4 schema
             if ( isset( $schema->maximum ) ) {
                 if ( $schema->exclusiveMaximum && $element >= $schema->maximum ) {
-                    $this->addError( $path, 'Must have a maximum value of ' . $schema->maximum, 'exclusiveMaximum', [ 'maximum' => $schema->maximum ] );
+                    $this->addError(
+                        $path,
+                        'Must have a maximum value of ' . $schema->maximum,
+                        'exclusiveMaximum',
+                        [ 'maximum' => $schema->maximum ]
+                    );
                 } elseif ( $element > $schema->maximum ) {
-                    $this->addError( $path, 'Must have a maximum value of ' . $schema->maximum, 'maximum', [ 'maximum' => $schema->maximum ] );
+                    $this->addError(
+                        $path,
+                        'Must have a maximum value of ' . $schema->maximum,
+                        'maximum',
+                        [ 'maximum' => $schema->maximum ]
+                    );
                 }
             } else {
-                $this->addError( $path, 'Use of exclusiveMaximum requires presence of maximum', 'missingMaximum' );
+                $this->addError(
+                    $path,
+                    'Use of exclusiveMaximum requires presence of maximum',
+                    'missingMaximum'
+                );
             }
         } elseif ( isset( $schema->exclusiveMaximum ) && filter_var( $schema->exclusiveMaximum, FILTER_VALIDATE_INT ) ) {
             // Draft 6 schema
             if ( $element >= $schema->exclusiveMaximum ) {
-                $this->addError( $path, 'Must have a maximum value of ' . $schema->exclusiveMaximum, 'exclusiveMaximum', [ 'exclusiveMaximum' => $schema->exclusiveMaximum ] );
+                $this->addError(
+                    $path,
+                    'Must have a maximum value of ' . $schema->exclusiveMaximum,
+                    'exclusiveMaximum',
+                    [ 'exclusiveMaximum' => $schema->exclusiveMaximum ]
+                );
             }
         } elseif ( isset( $schema->maximum ) && $element > $schema->maximum ) {
-            $this->addError( $path, 'Must have a maximum value of ' . $schema->maximum, 'maximum', [ 'maximum' => $schema->maximum ] );
+            $this->addError(
+                $path,
+                'Must have a maximum value of ' . $schema->maximum,
+                'maximum',
+                [ 'maximum' => $schema->maximum ]
+            );
         }
 
         // Verify divisibleBy - Draft v3
         if ( isset( $schema->divisibleBy ) && $this->fmod( $element, $schema->divisibleBy ) != 0 ) {
-            $this->addError( $path, 'Is not divisible by ' . $schema->divisibleBy, 'divisibleBy', [ 'divisibleBy' => $schema->divisibleBy ] );
+            $this->addError(
+                $path,
+                'Is not divisible by ' . $schema->divisibleBy,
+                'divisibleBy',
+                [ 'divisibleBy' => $schema->divisibleBy ]
+            );
         }
 
         // Verify multipleOf - Draft v4
         if ( isset( $schema->multipleOf ) && $this->fmod( $element, $schema->multipleOf ) != 0 ) {
-            $this->addError( $path, 'Must be a multiple of ' . $schema->multipleOf, 'multipleOf', [ 'multipleOf' => $schema->multipleOf ] );
+            $this->addError(
+                $path,
+                'Must be a multiple of ' . $schema->multipleOf,
+                'multipleOf',
+                [ 'multipleOf' => $schema->multipleOf ]
+            );
         }
 
         $this->checkFormat( $element, $schema, $path, $i );

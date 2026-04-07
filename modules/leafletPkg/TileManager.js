@@ -21,6 +21,7 @@ module.exports = Leaflet.GridLayer.extend( {
             } );
             img.src = imageUrl;
         } else {
+            // eslint-disable-next-line no-console
             console.warn( `Leaflet wants a tile for undefined position: ${coords}` );
         }
 

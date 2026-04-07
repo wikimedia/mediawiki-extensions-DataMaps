@@ -53,22 +53,26 @@ class ApiQueryDataMapEndpoint extends ApiBase {
         return [
             'pageid' => [
                 ParamValidator::PARAM_TYPE => 'integer',
-                ParamValidator::PARAM_REQUIRED => true
+                ParamValidator::PARAM_REQUIRED => true,
+                ApiBase::PARAM_HELP_MSG => 'apihelp-query-data-map-param-pageid',
             ],
             'revid' => [
                 ParamValidator::PARAM_TYPE => 'integer',
                 ParamValidator::PARAM_REQUIRED => false,
+                ApiBase::PARAM_HELP_MSG => 'apihelp-query-data-map-param-revid',
             ],
             'layers' => [
                 ParamValidator::PARAM_TYPE => 'string',
                 ParamValidator::PARAM_REQUIRED => false,
                 ParamValidator::PARAM_ISMULTI => true,
+                ApiBase::PARAM_HELP_MSG => 'apihelp-query-data-map-param-layers',
             ],
             'limit' => [
                 ParamValidator::PARAM_TYPE => 'limit',
                 ParamValidator::PARAM_DEFAULT => $this->config->getApiDefaultMarkerLimit(),
                 IntegerDef::PARAM_MIN => 1,
-                IntegerDef::PARAM_MAX => $this->config->getApiMaxMarkerLimit()
+                IntegerDef::PARAM_MAX => $this->config->getApiMaxMarkerLimit(),
+                ApiBase::PARAM_HELP_MSG => 'apihelp-query-data-map-param-limit',
             ],
             'continue' => [
                 ParamValidator::PARAM_TYPE => 'integer',
@@ -76,6 +80,11 @@ class ApiQueryDataMapEndpoint extends ApiBase {
                 ApiBase::PARAM_HELP_MSG => 'api-help-param-continue',
             ],
         ];
+    }
+
+    /** @inheritDoc */
+    protected function getSummaryMessage() {
+        return 'apihelp-query-data-map-summary';
     }
 
     public function isInternal() {

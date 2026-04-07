@@ -20,6 +20,7 @@ class DataMapContent extends JsonContent {
     public const LERR_NOT_DATAMAP = 2;
 
     # Reduce 2-12 numbers in an array onto a single line
+	// phpcs:ignore Generic.Files.LineLength.TooLong
     private const JOIN_MULTIPLE_NUMBERS_RE = '/(\n\s+)([+-]?\d+(\.\d+)?([eE][-+]?\d+)?|true|false),(?:\n\s+(?:[+-]?\d+(\.\d+)?([eE][-+]?\d+)?|true|false|null|"[^"\n\t]*"),?){1,12}/';
     # Reduce short arrays of strings onto a single line
     private const JOIN_MULTIPLE_STRINGS_RE = '/\[((?:\n\s+".{1,30}",?\s*$){1,4})\n\s+\]/';
@@ -60,7 +61,10 @@ class DataMapContent extends JsonContent {
             $part = '(?:("(?:' . $term . ')": [^,\n]+,?))';
             $fieldCount = substr_count( $term, '|' ) + 1;
             $full = '/' . implode( '\s+', array_fill( 0, $fieldCount, $part ) ) . '(\s+)/';
-            $subs = implode( ' ', array_map( static fn ( $n ) => '$' . $n, range( 1, $fieldCount ) ) ) . "$" . ( $fieldCount + 1 );
+            $subs = implode( ' ', array_map(
+                static fn ( $n ) => '$' . $n,
+                range( 1, $fieldCount )
+            ) ) . "$" . ( $fieldCount + 1 );
             $out = preg_replace( $full, $subs, $out );
         }
 
@@ -122,8 +126,8 @@ class DataMapContent extends JsonContent {
             $title = Title::newFromText( $mixinName, $config->getNamespaceId() );
             $mixinPage = self::loadPage( $title );
 
-            // Mixin failed to load, skip it. There's no way for us to throw an error at this stage without crashing the whole
-            // request. However, validation can catch this most of the time.
+            // Mixin failed to load, skip it. There's no way for us to throw an error at this stage
+            // without crashing the whole request. However, validation can catch this most of the time.
             if ( is_numeric( $mixinPage ) ) {
                 continue;
             }

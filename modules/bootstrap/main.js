@@ -142,7 +142,7 @@ mw.dataMaps = {
         return map;
     },
 
-    
+
     /**
      * @param {number} id
      * @param {HTMLElement} rootElement
@@ -152,14 +152,14 @@ mw.dataMaps = {
         /** @type {number?} */
         let timeoutId = null;
 
-        /** @type {IntersectionObserver} */
-        let observer;
+        // eslint-disable-next-line prefer-const
+        let /** @type {IntersectionObserver} */ observer;
         const handleDeferredLoad = () => {
             observer.disconnect();
             mw.dataMaps.initialiseMapWithConfig( id, rootElement, config );
         };
         observer = new IntersectionObserver(
-            ( entries, observer ) => {
+            entries => {
                 if ( entries[ 0 ].isIntersecting ) {
                     // Map's scrolled into view, let's queue up the load after a short while
                     if ( !timeoutId ) {
@@ -172,7 +172,7 @@ mw.dataMaps = {
                 }
             },
             {
-                threshold: 0.05,
+                threshold: 0.05
             }
         );
         observer.observe( rootElement );
@@ -185,18 +185,18 @@ mw.dataMaps = {
      */
     initialiseMapButtonWithConfig( id, rootElement, config ) {
         mw.loader.using( 'oojs-ui-widgets' ).then( () => {
-            const button = new OO.ui.ButtonWidget({
+            const button = new OO.ui.ButtonWidget( {
                 classes: [ 'ext-datamaps-load-map-button' ],
                 flags: [ 'primary', 'progressive' ],
-                label: mw.msg( 'datamap-load-map' ),
-            });
+                label: mw.msg( 'datamap-load-map' )
+            } );
             button.on( 'click', () => {
                 mw.dataMaps.initialiseMapWithConfig( id, rootElement, config );
                 button.$element.remove();
             } );
             const statusElement = Util.getNonNull( rootElement.querySelector(
                 '.ext-datamaps-container-status' ) );
-            statusElement.children[ 1 ].replaceWith( button.$element.get(0) );
+            statusElement.children[ 1 ].replaceWith( button.$element.get( 0 ) );
         } );
     },
 
@@ -240,11 +240,11 @@ mw.hook( 'wikipage.content' ).add( $content => {
     const autoLoadMap = mw.user.options.get( 'datamaps-load-map' );
     const disableAutoLoad = autoLoadMap === 'never' || ( autoLoadMap === 'auto' && isMobile );
     // Run initialisation for every map, followed by events for gadgets to listen to
-    const initMethod = disableAutoLoad ?
-        'initialiseMapButtonWithConfig' :
-        Util.isMapLazyLoadingEnabled ?
-            'lazyInitialiseMapWithConfig' :
-            'initialiseMapWithConfig';
+    const initMethod = disableAutoLoad
+        ? 'initialiseMapButtonWithConfig'
+        : Util.isMapLazyLoadingEnabled
+            ? 'lazyInitialiseMapWithConfig'
+            : 'initialiseMapWithConfig';
     for ( const rootElement of /** @type {HTMLElement[]} */ ( $content.find( MAP_CONTAINER_SELECTOR ) ) ) {
         const id = parseInt( Util.getNonNull( rootElement.dataset.datamapId ) ),
             config = getConfig( rootElement );

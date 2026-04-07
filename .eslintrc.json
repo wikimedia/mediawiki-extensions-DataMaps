@@ -12,7 +12,7 @@
         }
     },
 	"extends": [
-		"wikimedia/client",
+		"wikimedia/client-es6",
 		"wikimedia/mediawiki",
         "wikimedia/jquery"
 	],
@@ -26,6 +26,7 @@
 	},
 	"rules": {
         "arrow-parens": [ "error", "as-needed" ],
+        "compat/compat": "warn",
         "deprecation/deprecation": "warn",
         "es-x/no-object-values": "off",
 		"indent": [ "error", 4, {

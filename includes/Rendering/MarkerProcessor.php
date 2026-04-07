@@ -195,7 +195,11 @@ class MarkerProcessor {
         return $result;
     }
 
-    private function parseMultilineText( MarkerSpec $marker, /*array|string*/ $text ): string {
+    /**
+     * @param MarkerSpec $marker
+     * @param array|string $text
+     */
+    private function parseMultilineText( MarkerSpec $marker, $text ): string {
         if ( is_array( $text ) ) {
             $text = implode( "\n", $text );
         }

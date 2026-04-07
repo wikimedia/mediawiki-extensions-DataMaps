@@ -13,6 +13,9 @@
     <exclude-pattern>*/out/*</exclude-pattern>
     <rule ref="MediaWiki">
         <exclude name="Generic.WhiteSpace.DisallowSpaceIndent" />
+        <exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationPublic" />
+        <exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationProtected" />
+        <exclude name="MediaWiki.Commenting.FunctionComment.MissingDocumentationPrivate" />
     </rule>
     <rule ref="Generic.WhiteSpace.ScopeIndent">
         <properties>
@@ -20,10 +23,10 @@
         </properties>
     </rule>
     <rule ref="Generic.WhiteSpace.DisallowTabIndent" />
-	<rule ref="Generic.Files.LineLength">
-		<properties>
-			<property name="lineLimit" value="199" />
-			<property name="absoluteLineLimit" value="9999" />
-		</properties>
-	</rule>
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="129" />
+            <property name="absoluteLineLimit" value="9999" />
+        </properties>
+    </rule>
 </ruleset>

@@ -37,10 +37,10 @@
 .ext-datamaps-popup {
     .leaflet-popup-content-wrapper,
     .leaflet-popup-tip {
-        background: @background-color-interactive;
-        color: @color-base;
-        box-shadow: 0 3px 14px #0006;
         border: 1px solid @border-color-base;
+        background: @background-color-interactive;
+        box-shadow: 0 3px 14px #0006;
+        color: @color-base;
     }
 
     .leaflet-popup-content-wrapper {
@@ -53,12 +53,11 @@
         left: 50%;
         width: 1rem;
         height: 1rem;
+        border: 1px solid @border-color-base;
+        background-color: @background-color-interactive;
+        box-shadow: 0 4px 4px 0 @box-shadow-color-base, 0 0 8px 0 @box-shadow-color-base;
         -webkit-clip-path: polygon( 0 0, 100% 0, 0 100% );
         clip-path: polygon( 0 0, 100% 0, 0 100% );
-        background-color: @background-color-interactive;
-        border: 1px solid @border-color-base;
-        box-shadow: 0 4px 4px 0 @box-shadow-color-base,
-            0 0 8px 0 @box-shadow-color-base;
         transform: translateX( -50% ) translateY( -50% ) rotate( 225deg );
     }
 

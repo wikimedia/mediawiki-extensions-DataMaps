@@ -169,7 +169,7 @@ module.exports = Object.freeze( {
 
 
     createCdxIconElement( paths, size = 'medium' ) {
-        if ( typeof( paths ) === 'object' ) {
+        if ( typeof paths === 'object' ) {
             paths = paths.ltr || paths.default;
         }
 
@@ -178,8 +178,11 @@ module.exports = Object.freeze( {
         svgRoot.setAttribute( 'viewBox', '0 0 20 20' );
         svgRoot.innerHTML = paths;
         return module.exports.createDomElement( 'span', {
+            // Following classes used here:
+            // * cdx-icon--small
+            // * cdx-icon--medium
             classes: [ 'cdx-icon', `cdx-icon--${size}` ],
-            html: svgRoot,
+            html: svgRoot
         } );
     },
 

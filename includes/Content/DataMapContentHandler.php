@@ -41,7 +41,7 @@ class DataMapContentHandler extends JsonContentHandler {
 
     /**
      * Only allow this content handler to be used in the configured data namespace
-     * @inheritDoc
+     * @return bool If the title is in the configured namespace
      */
     public function canBeUsedOn( Title $title ) {
         $config = MediaWikiServices::getInstance()->get( ExtensionConfig::SERVICE_NAME );
@@ -79,7 +79,7 @@ class DataMapContentHandler extends JsonContentHandler {
 
         // Render the prelude box
         if ( $generateHtml ) {
-            $html .= Html::noticeBox( wfMessage( 'datamap-mapsrcinfo-internal-page' )->inContentLanguage(), [] );
+            $html .= Html::noticeBox( wfMessage( 'datamap-mapsrcinfo-internal-page' )->inContentLanguage() );
         }
 
         // Generate the validation info box

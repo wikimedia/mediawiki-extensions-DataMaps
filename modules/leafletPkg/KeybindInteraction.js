@@ -143,8 +143,7 @@ module.exports = Leaflet.Handler.extend( {
             } else {
                 this.removeWarning( 'touch' );
             }
-        } else
-        if ( e.type !== 'touchmove' && e.type !== 'touchstart' ) {
+        } else if ( e.type !== 'touchmove' && e.type !== 'touchstart' ) {
             this.removeWarning( 'touch' );
         } else if ( e.touches.length === 1 ) {
             this.showWarning( 'touch' );

@@ -38,7 +38,7 @@ class Viewport extends EventEmitter {
         const leafletConfig = this._makeLeafletConfig( config );
         leafletConfig.crs = ( {
             [ CRSOrigin.BottomLeft ]: Leaflet.Ark.BottomLeftPixelCrs,
-            [ CRSOrigin.TopLeft ]: Leaflet.Ark.TopLeftPixelCrs,
+            [ CRSOrigin.TopLeft ]: Leaflet.Ark.TopLeftPixelCrs
         } )[ this.map.crs.origin ];
         leafletConfig.renderer = new Leaflet.Canvas( leafletConfig.rendererSettings );
 
@@ -204,7 +204,7 @@ class Viewport extends EventEmitter {
                 lock: this.map.checkFeatureFlag( MapFlags.DisableZoom ),
                 max: 6,
                 auto: true,
-                scrollSpeed: 1,
+                scrollSpeed: 1
             };
         }
 
@@ -371,19 +371,19 @@ class Viewport extends EventEmitter {
             leafletMarker.getLatLng(),
             this.getPopupZoom(),
             {
-                animate: !doInstant,
+                animate: !doInstant
             }
         );
     }
 
 
     zoomNSteps( steps ) {
-		if ( steps > 0 && this._leaflet._zoom < this._leaflet.getMaxZoom() ) {
+        if ( steps > 0 && this._leaflet._zoom < this._leaflet.getMaxZoom() ) {
             this._leaflet.zoomIn( this._leaflet.options.zoomDelta * steps );
-		}
-		if ( steps < 0 && this._leaflet._zoom > this._leaflet.getMinZoom() ) {
+        }
+        if ( steps < 0 && this._leaflet._zoom > this._leaflet.getMinZoom() ) {
             this._leaflet.zoomOut( this._leaflet.options.zoomDelta * -steps );
-		}
+        }
     }
 
 

@@ -26,6 +26,6 @@ module.exports = Object.assign( {}, Leaflet, {
         /**
          * @since 0.17.11
          */
-        TileManager: require( './TileManager.js' ),
+        TileManager: require( './TileManager.js' )
     }
 } );

@@ -2,7 +2,12 @@
 namespace MediaWiki\Extension\DataMaps\Rendering\Utils;
 
 class DataMapColourUtils {
-    public static function decode( /*string|array*/ $input ): ?array {
+
+    /**
+     * @param string|array $input
+     * @return array|null
+     */
+    public static function decode( $input ): ?array {
         if (
             is_array( $input ) && count( $input ) == 3 && is_numeric( $input[0] ) && is_numeric( $input[1] )
             && is_numeric( $input[2] )
@@ -25,7 +30,11 @@ class DataMapColourUtils {
         return null;
     }
 
-    public static function decode4( /*string|array*/ $input ): ?array {
+    /**
+     * @param string|array $input
+     * @return array|null
+     */
+    public static function decode4( $input ): ?array {
         if ( is_array( $input ) && count( $input ) == 4
             && is_numeric( $input[0] ) && is_numeric( $input[1] ) && is_numeric( $input[2] ) && is_numeric( $input[3] ) ) {
             $input[3] *= 255;

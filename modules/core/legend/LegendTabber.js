@@ -2,7 +2,6 @@
 /** @typedef {import( '../controls.js' ).ControlButtonOptions} ControlButtonOptions */
 const Util = require( '../Util.js' ),
     { MapControl } = require( '../controls.js' ),
-    { MapFlags } = require( '../enums.js' ),
     CodexIcon = require( '../icons.json' );
 
 
@@ -101,7 +100,7 @@ LegendTabber.ExpandableControl = class ExpandableControl extends MapControl {
     constructor( map, buttonOptions, contentElement ) {
         super( map, 'expandable' );
 
-        const button = this._makeButton( Object.assign( /** @type {ControlButtonOptions} */ ( {
+        this._makeButton( Object.assign( /** @type {ControlButtonOptions} */ ( {
             addToSelf: true,
             clickHandler: () => this.toggle()
         } ), buttonOptions ) );

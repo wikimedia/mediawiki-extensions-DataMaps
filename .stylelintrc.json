@@ -6,7 +6,9 @@
 	],
 	"rules": {
 		"font-weight-notation": "numeric",
-		"indentation": 4,
-		"selector-class-pattern": "^(ext-datamaps|oo-ui|leaflet)-"
+		"@stylistic/indentation": 4,
+		"selector-class-pattern": "^(ext-datamaps|oo-ui|leaflet|cdx)-",
+		"plugin/no-unsupported-browser-features": null,
+		"declaration-property-unit-disallowed-list": null
 	}
 }

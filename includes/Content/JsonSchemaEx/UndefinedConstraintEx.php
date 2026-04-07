@@ -56,12 +56,13 @@ class UndefinedConstraintEx extends UndefinedConstraint {
                 $initErrors = $this->getErrors();
                 try {
                     $this->checkUndefined( $value, $anyOf, $path, $i );
-                    $isValid = count( $this->getErrors() ) == count( $initErrors );
-                    if ( $isValid ) {
+                    if ( count( $this->getErrors() ) == count( $initErrors ) ) {
+                        $isValid = true;
                         break;
                     }
 
                     // PATCH: Contextualise any errors
+                    $isValid = false;
                     $errorContext[] = array_slice( $this->errors, count( $initErrors ) );
                     $this->errors = $initErrors;
                     // END PATCH

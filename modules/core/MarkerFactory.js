@@ -109,6 +109,7 @@ class MarkerFactory extends EventEmitter {
      * @fires DataMap#markerReady
      * @return {LeafletModule.AnyMarker} A Leaflet marker instance.
      */
+    // eslint-disable-next-line camelcase
     DEPRECATED_createMarkerFromApiInstance( layers, uncheckedInstance, properties ) {
         // Initialise state if it's missing, thus reaching a null-safe state
         if ( !uncheckedInstance[ 2 ] ) {
@@ -139,7 +140,7 @@ class MarkerFactory extends EventEmitter {
                         ? new Leaflet.Icon( {
                             iconUrl: instance[ 2 ].icon,
                             iconSize: scaledSize,
-                            useWithCanvas: shouldUseCanvas,
+                            useWithCanvas: shouldUseCanvas
                         } )
                         : this._getLeafletIconForLayers( layers )
                 ),
@@ -202,6 +203,7 @@ class MarkerFactory extends EventEmitter {
      * @param {DataMaps.RuntimeMarkerProperties?} [properties] Optional object with arbitrary fields.
      * @return {LeafletModule.AnyMarker} Leaflet marker instance.
      */
+    // eslint-disable-next-line camelcase
     DEPRECATED_createMarker( layers, position, state, properties ) {
         return this.DEPRECATED_createMarkerFromApiInstance( layers, [ position[ 0 ], position[ 1 ], state || null ], properties );
     }

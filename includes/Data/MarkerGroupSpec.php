@@ -69,15 +69,24 @@ class MarkerGroupSpec extends DataModel {
         return isset( $this->raw->extraMinZoomSize ) ? $this->raw->extraMinZoomSize : null;
     }
 
-    public function getRawFillColour() /*: ?array|string*/ {
+    /**
+     * @return ?array|string
+     */
+    public function getRawFillColour() {
         return isset( $this->raw->fillColor ) ? $this->raw->fillColor : null;
     }
 
-    public function getRawPinColour() /*: ?array|string*/ {
+    /**
+     * @return ?array|string
+     */
+    public function getRawPinColour() {
         return isset( $this->raw->pinColor ) ? $this->raw->pinColor : null;
     }
 
-    public function getRawStrokeColour() /*: ?array|string*/ {
+    /**
+     * @return ?array|string
+     */
+    public function getRawStrokeColour() {
         return $this->raw->strokeColor ?? null;
     }
 
@@ -97,7 +106,10 @@ class MarkerGroupSpec extends DataModel {
         return $this->getFillColour();
     }
 
-    public function getStrokeWidth() /*: ?int|float */ {
+    /**
+     * @return ?int|float
+     */
+    public function getStrokeWidth() {
         return $this->raw->strokeWidth ?? self::DEFAULT_VECTOR_STROKE_WIDTH;
     }
 

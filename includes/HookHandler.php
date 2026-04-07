@@ -116,7 +116,7 @@ final class HookHandler implements
                 'datamap-userpref-load-map-auto' => 'auto',
                 'datamap-userpref-load-map-never' => 'never'
             ],
-            // The following message is generated upstrem:
+            // The following message is generated upstream:
             // * prefs-datamaps
             'section' => 'rendering/datamaps',
         ];

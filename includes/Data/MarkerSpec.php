@@ -31,9 +31,9 @@ class MarkerSpec extends DataModel {
 
     /**
      * Returns marker's description that will be shown in its popup and used as a keyword source for search.
-     * @return array|string|null
+     * @return ?array|string
      */
-    public function getDescription()/*: ?array|string */ {
+    public function getDescription() {
         return isset( $this->raw->description ) ? $this->raw->description : null;
     }
 
@@ -90,17 +90,17 @@ class MarkerSpec extends DataModel {
     /**
      * If set, returns the unique identifier requested in this marker's data. This identifier will be used in persistent
      * links and functions requiring browser's storage.
-     * @return string|null
+     * @return int|string|null
      */
     public function getCustomPersistentId() {
         return isset( $this->raw->id ) ? $this->raw->id : null;
     }
 
     /**
-     * Returns optional keywords override to be used by search.
-     * @return string|array|null
+     * Returns optional keywords override to be used by search
+     * @return ?array|string
      */
-    public function getSearchKeywords()/*: ?array|string */ {
+    public function getSearchKeywords() {
         return isset( $this->raw->searchKeywords ) ? $this->raw->searchKeywords : null;
     }
 

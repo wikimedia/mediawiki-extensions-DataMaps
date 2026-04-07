@@ -74,7 +74,10 @@ class DataMapSpec extends DataModel {
                     new MapBackgroundSpec( $this->raw->background )
                 ];
             } else {
-                $this->cachedBackgrounds = array_map( static fn ( $raw ) => new MapBackgroundSpec( $raw ), $this->raw->backgrounds );
+                $this->cachedBackgrounds = array_map(
+                    static fn ( $raw ) => new MapBackgroundSpec( $raw ),
+                    $this->raw->backgrounds
+                );
             }
         }
         return $this->cachedBackgrounds;
