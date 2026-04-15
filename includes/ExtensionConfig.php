@@ -30,6 +30,8 @@ class ExtensionConfig {
         ConfigNames::EnablePortingTools,
         ConfigNames::EnableExperimentalFeatures,
         ConfigNames::EnableLoadMapButton,
+        ConfigNames::UseCodeEditor,
+        ConfigNames::UseCodeMirror,
     ];
 
     public function __construct(
@@ -137,5 +139,13 @@ class ExtensionConfig {
 
     public function hasExperimentalFeatures(): bool {
         return $this->options->get( ConfigNames::EnableExperimentalFeatures );
+    }
+
+    public function shouldUseCodeEditor(): bool {
+        return $this->options->get( ConfigNames::UseCodeEditor );
+    }
+
+    public function shouldUseCodeMirror(): bool {
+        return !$this->shouldUseCodeEditor() && $this->options->get( ConfigNames::UseCodeMirror );
     }
 }

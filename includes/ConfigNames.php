@@ -97,4 +97,14 @@ class ConfigNames {
      * Name constant. For use in ExtensionConfig.
      */
     public const EnableLoadMapButton = 'DataMapsEnableLoadMapButton';
+
+    /**
+     * Name constant. For use in ExtensionConfig.
+     */
+    public const UseCodeEditor = 'DataMapsUseCodeEditor';
+
+    /**
+     * Name constant. For use in ExtensionConfig.
+     */
+    public const UseCodeMirror = 'DataMapsUseCodeMirror';
 }

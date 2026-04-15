@@ -353,7 +353,8 @@
 		"RecentChange_save": "MainHandler",
 		"RevisionDataUpdates": "MainHandler",
 		"ArticlePurge": "ArticleMapCacheManagingHooks",
-		"CodeEditorGetPageLanguage": "MediaWiki\\Extension\\DataMaps\\Hooks\\ContentModelHooks::onCodeEditorGetPageLanguage"
+		"CodeEditorGetPageLanguage": "ContentModelHooks",
+		"CodeMirrorGetMode": "ContentModelHooks"
 	},
     "HookHandlers": {
         "MainHandler": {
@@ -455,6 +456,14 @@
 			"value": false
 		},
 		"EnableLoadMapButton": {
+			"value": false
+		},
+		"UseCodeEditor": {
+			"description": "Whether to use the CodeEditor extension when editing map JSON. Takes precedence over $wgDataMapsUseCodeMirror.",
+			"value": true
+		},
+		"UseCodeMirror": {
+			"description": "Whether to use the CodeMirror extension when editing map JSON. Ignored if $wgDataMapsUseCodeEditor is true.",
 			"value": false
 		},
 		"AllowExperimentalFeatures": {

@@ -46,8 +46,6 @@ final class ContentModelHooks implements
                 $model = CONTENT_MODEL_DATAMAPS;
             }
         }
-
-        return true;
     }
 
     /**
@@ -55,11 +53,24 @@ final class ContentModelHooks implements
      *
      * @param Title $title
      * @param string &$languageCode
-     * @return void
+     * @return bool
      */
-    public static function onCodeEditorGetPageLanguage( Title $title, &$languageCode ) {
-        if ( $title->hasContentModel( CONTENT_MODEL_DATAMAPS ) ) {
+    public function onCodeEditorGetPageLanguage( Title $title, &$languageCode ) {
+        if ( $this->config->shouldUseCodeEditor() && $title->hasContentModel( CONTENT_MODEL_DATAMAPS ) ) {
             $languageCode = 'json';
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Informs Extension:CodeMirror that map pages should use JSON highlighting.
+     */
+    public function onCodeMirrorGetMode( Title $title, ?string &$mode, string $model ): bool {
+        if ( $this->config->shouldUseCodeMirror() && $title->hasContentModel( CONTENT_MODEL_DATAMAPS ) ) {
+            $mode = 'json';
+            return false;
         }
 
         return true;
