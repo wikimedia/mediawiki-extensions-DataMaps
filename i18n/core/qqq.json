@@ -5,6 +5,7 @@
 			"Amire80"
 		]
 	},
+	"datamap-name": "{{name}}",
 	"datamap-desc": "{{desc\n| name = DataMaps\n| url = https://mediawiki.org/wiki/Extension:DataMaps\n}}",
 	"content-model-datamap": "The name for Interactive Data Map content model, used when describing what type of content a page contains.",
 	"datamap-doc-page-does-not-exist": "Message displayed if the documentation page does not exist.\n\nParameters:\n* $1 - the prefixed title of the doc page",

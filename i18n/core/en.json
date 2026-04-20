@@ -4,6 +4,7 @@
             "alex4401"
         ]
     },
+    "datamap-name": "Interactive Data Maps",
     "datamap-desc": "Allows embedding of interactive maps into wiki pages.",
     "content-model-datamap": "Interactive Map",
     "datamap-standard-title-prefix": "",
