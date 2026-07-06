@@ -286,17 +286,22 @@ class DataMap extends EventEmitter {
             return;
         }
 
-        // If in a tabber and TabberNeue is not loaded yet, wait for it. We can't efficiently make any guarantees about
-        // the ID until then.
         const tabberId = Util.TabberNeue.getOwningId( this.rootElement );
-        if ( tabberId !== null && mw.loader.getState( Util.TabberNeue.module ) !== 'ready' ) {
-            mw.loader.using( Util.TabberNeue.module, () => this._setUpUriMarkerHandler() );
-            return;
-        }
-
-        // If in a tabber, check if the hash location matches
-        if ( tabberId && tabberId !== window.location.hash.slice( 1 ) ) {
-            return;
+        if ( tabberId !== null ) {
+            // If in a tabber and TabberNeue is not loaded yet, wait for it.
+            // We can't efficiently make any guarantees about the ID until then.
+            if ( mw.loader.getState( Util.TabberNeue.module ) !== 'ready' ) {
+                mw.loader.using( Util.TabberNeue.module, () => this._setUpUriMarkerHandler() );
+                return;
+            }
+            // If in a tabber, check if current tab is selected
+            const selectedTab = window.location.hash.slice( 1 );
+            const isCurrentTabSelected = selectedTab
+                ? ( tabberId === selectedTab )
+                : Util.TabberNeue.inFirstTab( this.rootElement );
+            if ( !isCurrentTabSelected ) {
+                return;
+            }
         }
 
         // Listen to incoming markers and wait for a matching one

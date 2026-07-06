@@ -462,6 +462,20 @@ module.exports = Object.freeze( {
             const panel = module.exports.TabberNeue.getOwningPanel( element );
             return panel ? ( panel.getAttribute( 'id' ) || module.exports.getNonNull( panel.dataset.title ).replace( ' ', '_' ) )
                 : null;
+        },
+
+        /**
+         * Checks whether the map is in the first tab of its TabberNeue container.
+         *
+         * @param {HTMLElement} element
+         * @return {boolean}
+         */
+        inFirstTab( element ) {
+            const panel = module.exports.TabberNeue.getOwningPanel( element );
+            if ( !panel || !panel.parentElement || !panel.parentElement.firstElementChild ) {
+                return true;
+            }
+            return panel === panel.parentElement.firstElementChild;
         }
     }
 } );
