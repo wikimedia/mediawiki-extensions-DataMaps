@@ -6,5 +6,6 @@ use MediaWiki\Status\Status;
 
 interface ForeignMapConverter {
     public function validate( JsonContent $content ): Status;
+
     public function convert( JsonContent $content ): object;
 }

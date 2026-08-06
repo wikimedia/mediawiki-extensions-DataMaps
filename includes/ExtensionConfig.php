@@ -107,8 +107,8 @@ class ExtensionConfig {
     public function getPublicSchemaPath(): string {
         $retval = $this->options->get( ConfigNames::PublicSchemaPath );
         if ( !$retval ) {
-            $wgExtensionAssetsPath = $this->options->get( MainConfigNames::ExtensionAssetsPath );
-            $retval = "$wgExtensionAssetsPath/DataMaps";
+            $extensionAssetsPath = $this->options->get( MainConfigNames::ExtensionAssetsPath );
+            $retval = "$extensionAssetsPath/DataMaps";
         }
         return $retval;
     }

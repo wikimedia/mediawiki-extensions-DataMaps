@@ -10,7 +10,8 @@ final class NamespaceHooks implements
 {
     public function __construct(
         private readonly ExtensionConfig $config
-    ) { }
+    ) {
+    }
 
     /**
      * Registers Map namespace if configured so (default behaviour). Sets the robot policy if namespace ID is 2900.

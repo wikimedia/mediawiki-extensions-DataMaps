@@ -11,7 +11,8 @@ final class ArticleMapCacheManagingHooks implements
 {
     public function __construct(
         private readonly ExtensionConfig $config
-    ) { }
+    ) {
+    }
 
     /**
      * Purge processed map cache for the latest revision on action=purge.

@@ -60,7 +60,7 @@ class DataMapContent extends JsonContent {
             $part = '(?:("(?:' . $term . ')": [^,\n]+,?))';
             $fieldCount = substr_count( $term, '|' ) + 1;
             $full = '/' . implode( '\s+', array_fill( 0, $fieldCount, $part ) ) . '(\s+)/';
-            $subs = implode( ' ', array_map( fn ( $n ) => '$' . $n, range( 1, $fieldCount ) ) ) . "$" . ( $fieldCount + 1 );
+            $subs = implode( ' ', array_map( static fn ( $n ) => '$' . $n, range( 1, $fieldCount ) ) ) . "$" . ( $fieldCount + 1 );
             $out = preg_replace( $full, $subs, $out );
         }
 

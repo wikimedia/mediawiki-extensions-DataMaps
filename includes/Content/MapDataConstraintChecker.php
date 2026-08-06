@@ -19,7 +19,8 @@ class MapDataConstraintChecker {
         private readonly MapVersionInfo $version,
         private readonly stdClass $data,
         private readonly Status $status
-    ) { }
+    ) {
+    }
 
     /**
      * @return DataConstraint[]

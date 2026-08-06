@@ -19,7 +19,7 @@ class DataMapColourUtils {
                 return null;
             }
 
-            [ $r, $g, $b ] = array_map( fn ( $c ) => hexdec( str_pad( $c, 2, $c ) ), $input );
+            [ $r, $g, $b ] = array_map( static fn ( $c ) => hexdec( str_pad( $c, 2, $c ) ), $input );
             return [ $r, $g, $b ];
         }
         return null;
@@ -41,7 +41,7 @@ class DataMapColourUtils {
                 return self::decode( $input );
             }
 
-            [ $r, $g, $b, $a ] = array_map( fn ( $c ) => hexdec( str_pad( $c, 2, $c ) ), $input );
+            [ $r, $g, $b, $a ] = array_map( static fn ( $c ) => hexdec( str_pad( $c, 2, $c ) ), $input );
             return [ $r, $g, $b, $a ];
         }
         return self::decode( $input );

@@ -12,7 +12,8 @@ final class ContentModelHooks implements
 {
     public function __construct(
         private readonly ExtensionConfig $config
-    ) { }
+    ) {
+    }
 
     public static function onRegistration(): bool {
         define( 'CONTENT_MODEL_DATAMAPS', 'datamap' );

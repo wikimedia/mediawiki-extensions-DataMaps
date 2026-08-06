@@ -35,9 +35,9 @@ class BackgroundLayerExistsConstraint extends DataConstraint {
                 $badAssocLayers = array_filter(
                     array_filter(
                         explode( ' ', $assocStr ),
-                        fn ( $item ) => str_starts_with( $item, 'bg:' )
+                        static fn ( $item ) => str_starts_with( $item, 'bg:' )
                     ),
-                    fn ( $item ) => !in_array( $item, $validLayers )
+                    static fn ( $item ) => !in_array( $item, $validLayers )
                 );
 
                 if ( count( $badAssocLayers ) > 0 ) {

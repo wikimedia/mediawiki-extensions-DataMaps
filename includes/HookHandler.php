@@ -27,7 +27,8 @@ final class HookHandler implements
 {
     public function __construct(
         private readonly ExtensionConfig $config
-    ) { }
+    ) {
+    }
 
     /**
      * Registers parser functions when a parser is initialised.
@@ -115,8 +116,8 @@ final class HookHandler implements
                 'datamap-userpref-load-map-auto' => 'auto',
                 'datamap-userpref-load-map-never' => 'never'
             ],
-			// The following message is generated upstrem:
-			// * prefs-datamaps
+            // The following message is generated upstrem:
+            // * prefs-datamaps
             'section' => 'rendering/datamaps',
         ];
     }

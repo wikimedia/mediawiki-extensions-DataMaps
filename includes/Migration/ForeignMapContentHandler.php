@@ -22,6 +22,7 @@ class ForeignMapContentHandler extends JsonContentHandler {
 
     /**
      * Only allow this content handler to be used in the configured data namespace
+     * @inheritDoc
      */
     public function canBeUsedOn( Title $title ) {
         $config = MediaWikiServices::getInstance()->get( ExtensionConfig::SERVICE_NAME );

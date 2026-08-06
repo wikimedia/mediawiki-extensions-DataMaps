@@ -6,7 +6,7 @@
 	"author": [
 		"alex4401"
 	],
-	"url": "https://mediawiki.org/wiki/Extension:DataMaps",
+	"url": "https://www.mediawiki.org/wiki/Extension:DataMaps",
 	"descriptionmsg": "datamap-desc",
 	"license-name": "GPL-2.0-or-later",
 	"type": "parserhook",
