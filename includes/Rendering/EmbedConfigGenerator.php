@@ -251,7 +251,7 @@ class EmbedConfigGenerator {
         $result = [];
 
         $result['image'] = DataMapFileUtils::getRequiredFile( $spec->getImageName() )->getURL();
-        $result['position'] =CoordinateSystem::normalisePoint( $spec->getPlacementLocation(), $coordOrder );
+        $result['position'] = CoordinateSystem::normalisePoint( $spec->getPlacementLocation(), $coordOrder );
         $result['aa'] = 1;
         if ( $pixelated ) {
             $result['pixelated'] = true;

@@ -216,12 +216,12 @@ class MapContentValidator {
                         static function ( $errors ) {
                             return array_filter(
                                 $errors,
-                                fn ( $el ) => !in_array( $el['constraint'], [ 'required', 'additionalProp' ] )
+                                static fn ( $el ) => !in_array( $el['constraint'], [ 'required', 'additionalProp' ] )
                             );
                         },
                         $error['matchErrors']
                     ),
-                    fn ( $el ) => !empty( $el )
+                    static fn ( $el ) => !empty( $el )
                 );
 
                 if ( count( $moreErrors ) === 1 ) {

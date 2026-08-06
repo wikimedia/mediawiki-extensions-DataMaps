@@ -17,7 +17,8 @@ final class MarkerProcessorFactory {
     public function __construct(
         private readonly ParserFactory $parserFactory,
         private readonly ExtensionConfig $config
-    ) { }
+    ) {
+    }
 
     /**
      * Returns parser options for marker wikitext expansion.

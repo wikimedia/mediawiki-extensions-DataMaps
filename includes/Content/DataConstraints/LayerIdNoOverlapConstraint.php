@@ -39,7 +39,7 @@ class LayerIdNoOverlapConstraint extends DataConstraint {
                     $result = false;
                 }
 
-                $assocGroups = array_filter( $assocLayers, fn ( $item ) => in_array( $item, $groupIds ) );
+                $assocGroups = array_filter( $assocLayers, static fn ( $item ) => in_array( $item, $groupIds ) );
                 if ( count( $assocGroups ) > 1 ) {
                     $formatted = StatusUtils::formatArray( $assocGroups );
                     $this->emitError( self::MARKER_OVERLAP_MESSAGE, "/markers/$assocStr", $formatted );

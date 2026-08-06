@@ -7,6 +7,7 @@ class DataModel {
     protected static string $publicName = '???';
 
     protected stdClass $raw;
+
     public function __construct( stdClass $raw ) {
         if ( is_array( $raw ) ) {
             $raw = (object)$raw;

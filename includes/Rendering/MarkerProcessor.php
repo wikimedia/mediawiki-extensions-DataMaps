@@ -76,7 +76,7 @@ class MarkerProcessor {
         // Custom persistent ID
         if ( $marker->getCustomPersistentId() != null ) {
             $pid = $marker->getCustomPersistentId();
-            if ( is_integer( $pid ) ) {
+            if ( is_int( $pid ) ) {
                 $pid = (string)$pid;
             }
             $slots['uid'] = $pid;

@@ -8,7 +8,7 @@ final class StatusUtils {
         $formatted = implode(
             ', ',
             array_map(
-                fn ( $el ) => "<$wrapperTag>" . wfEscapeWikiText( $el ) . "</$wrapperTag>",
+                static fn ( $el ) => "<$wrapperTag>" . wfEscapeWikiText( $el ) . "</$wrapperTag>",
                 $data
             )
         );
@@ -19,7 +19,7 @@ final class StatusUtils {
         $formatted = implode(
             ', ',
             array_map(
-                fn ( $el ) => "<$wrapperTag>" . $el . "</$wrapperTag>",
+                static fn ( $el ) => "<$wrapperTag>" . $el . "</$wrapperTag>",
                 $data
             )
         );

@@ -9,9 +9,9 @@
 
  namespace MediaWiki\Extension\DataMaps\Content\JsonSchemaEx;
 
+use JsonSchema\Constraints\UndefinedConstraint;
 use JsonSchema\Entity\JsonPointer;
 use JsonSchema\Exception\ValidationException;
-use JsonSchema\Constraints\UndefinedConstraint;
 
 /**
  * The UndefinedConstraint Constraints
@@ -23,10 +23,10 @@ class UndefinedConstraintEx extends UndefinedConstraint {
     /**
      * Validate allOf, anyOf, and oneOf properties
      *
-     * @param mixed       $value
-     * @param mixed       $schema
+     * @param mixed &$value
+     * @param mixed $schema
      * @param JsonPointer $path
-     * @param string      $i
+     * @param string $i
      */
     protected function validateOfProperties( &$value, $schema, JsonPointer $path, $i = '' ) {
         // Verify type
@@ -56,7 +56,8 @@ class UndefinedConstraintEx extends UndefinedConstraint {
                 $initErrors = $this->getErrors();
                 try {
                     $this->checkUndefined( $value, $anyOf, $path, $i );
-                    if ( $isValid = ( count( $this->getErrors() ) == count( $initErrors ) ) ) {
+                    $isValid = count( $this->getErrors() ) == count( $initErrors );
+                    if ( $isValid ) {
                         break;
                     }
 

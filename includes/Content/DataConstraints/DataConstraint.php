@@ -31,5 +31,6 @@ abstract class DataConstraint {
     }
 
     abstract public function getDependencies(): array;
+
     abstract public function run( MapVersionInfo $version, stdClass $data ): bool;
 }

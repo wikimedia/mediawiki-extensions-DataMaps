@@ -33,7 +33,7 @@ class DataMapSpec extends DataModel {
             return null;
         }
 
-        return array_map( fn ( $el ) => Title::newFromText( $el, $config->getNamespaceId() ), $list );
+        return array_map( static fn ( $el ) => Title::newFromText( $el, $config->getNamespaceId() ), $list );
     }
 
     /**
@@ -74,7 +74,7 @@ class DataMapSpec extends DataModel {
                     new MapBackgroundSpec( $this->raw->background )
                 ];
             } else {
-                $this->cachedBackgrounds = array_map( fn ( $raw ) => new MapBackgroundSpec( $raw ), $this->raw->backgrounds );
+                $this->cachedBackgrounds = array_map( static fn ( $raw ) => new MapBackgroundSpec( $raw ), $this->raw->backgrounds );
             }
         }
         return $this->cachedBackgrounds;

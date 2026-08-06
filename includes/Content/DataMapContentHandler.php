@@ -41,6 +41,7 @@ class DataMapContentHandler extends JsonContentHandler {
 
     /**
      * Only allow this content handler to be used in the configured data namespace
+     * @inheritDoc
      */
     public function canBeUsedOn( Title $title ) {
         $config = MediaWikiServices::getInstance()->get( ExtensionConfig::SERVICE_NAME );
@@ -85,7 +86,7 @@ class DataMapContentHandler extends JsonContentHandler {
         $info = $this->getSourceValidationInfo( $content );
         $isGood = $info['method'] !== 'errorBox';
         if ( $generateHtml ) {
-            $boxText = implode( '', array_map( fn ( $value ) => "<p>$value</p>", $info['messages'] ) );
+            $boxText = implode( '', array_map( static fn ( $value ) => "<p>$value</p>", $info['messages'] ) );
             // Methods used here:
             // - successBox
             // - warningBox
