@@ -1,5 +1,6 @@
 *.code-workspace
 .eslintcache
+.stylelintcache
 /vendor
 /node_modules
 /composer.lock

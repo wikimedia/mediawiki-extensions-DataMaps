@@ -1,8 +1,10 @@
 {
+	"name": "DataMaps",
 	"private": true,
 	"scripts": {
+		"test": "npm run lint:js && npm run lint:styles",
 		"lint:js": "eslint --cache --max-warnings 0 .",
-		"lint:styles": "stylelint \"**/*.{less,css}\"",
+		"lint:styles": "stylelint --cache \"**/*.{less,css}\"",
 		"schema": "ts-json-schema-generator --path \"schemas/src/**/*.ts\" --strict-tuples --type DataMap -o schemas/generated.json"
 	},
 	"devDependencies": {
