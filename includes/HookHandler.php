@@ -232,7 +232,7 @@ final class HookHandler implements
                                 && MarkerProcessor::shouldParseString( $marker, $marker->getDescription() ) ) {
                                 $parser->parse( $marker->getDescription(), $title, $parserOptions, false, false );
                             }
-                            $parser->getOutput()->setText( '' );
+                            $parser->getOutput()->setContentHolderText( '' );
 
                             // Subtract the budget and stop iteration
                             $budget -= microtime( true ) - $startTime;
