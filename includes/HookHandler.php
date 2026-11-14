@@ -214,7 +214,7 @@ final class HookHandler implements
                     $parser->parse( '', $title, $parserOptions, false, true );
                     // Creating a marker model backed by an empty object, as it will later get reassigned to actual data to avoid
                     // creating thousands of small, very short-lived (only one at a time) objects
-                    $marker = new Data\MarkerSpec( new \stdclass() );
+                    $marker = new Data\MarkerSpec( new \stdClass() );
                     // The budget controls remaining time we may spend on parsing wikitext in the markers
                     $budget = $this->config->getLinksUpdateBudget();
                     $startTime = microtime( true );

@@ -1,14 +1,14 @@
 <?php
 namespace MediaWiki\Extension\DataMaps\Data;
 
-use stdclass;
+use stdClass;
 
 class MarkerLayerSpec extends DataModel {
     protected static string $publicName = 'MarkerLayerSpec';
 
     private string $id;
 
-    public function __construct( string $id, stdclass $raw ) {
+    public function __construct( string $id, stdClass $raw ) {
         parent::__construct( $raw );
         $this->id = $id;
     }

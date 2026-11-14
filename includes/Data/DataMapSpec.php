@@ -17,7 +17,7 @@ class DataMapSpec extends DataModel {
 
     public const MARKER_ERROR_LIMIT = 30;
 
-    public static function staticIsFragment( \stdclass $raw ): bool {
+    public static function staticIsFragment( \stdClass $raw ): bool {
         return $raw->{'$fragment'} ?? false;
     }
 

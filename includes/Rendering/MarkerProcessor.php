@@ -42,7 +42,7 @@ class MarkerProcessor {
 
         // Creating a marker model backed by an empty object, as it will later get reassigned to actual data to avoid
         // creating thousands of small, very short-lived (only one at a time) objects
-        $marker = new MarkerSpec( new \stdclass() );
+        $marker = new MarkerSpec( new \stdClass() );
 
         $this->dataMap->iterateRawMarkerMap( function ( string $layers, array $rawCollection ) use ( &$results, &$marker ) {
             // If filters were specified, check if there is any overlap between the filters list and skip the marker set

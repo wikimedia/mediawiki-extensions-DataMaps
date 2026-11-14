@@ -118,7 +118,7 @@ class EmbedRenderer {
         } );
 
         // Markers
-        $marker = new MarkerSpec( new \stdclass() );
+        $marker = new MarkerSpec( new \stdClass() );
         $this->data->iterateRawMarkerMap( function ( string $layers, array $rawCollection ) use ( &$marker ) {
             foreach ( $rawCollection as &$rawMarker ) {
                 $marker->reassignTo( $rawMarker );

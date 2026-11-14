@@ -2,7 +2,7 @@
 namespace MediaWiki\Extension\DataMaps\Data;
 
 use MediaWiki\Extension\DataMaps\Rendering\Utils\DataMapColourUtils;
-use stdclass;
+use stdClass;
 
 class MarkerGroupSpec extends DataModel {
     protected static string $publicName = 'MarkerGroupSpec';
@@ -25,7 +25,7 @@ class MarkerGroupSpec extends DataModel {
 
     private string $id;
 
-    public function __construct( string $id, stdclass $raw ) {
+    public function __construct( string $id, stdClass $raw ) {
         parent::__construct( $raw );
         $this->id = $id;
     }

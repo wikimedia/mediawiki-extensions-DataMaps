@@ -54,7 +54,7 @@ class DataMapContent extends JsonContent {
         parent::__construct( $text, $modelId );
     }
 
-    public static function toJSON( stdclass $raw ) {
+    public static function toJSON( stdClass $raw ) {
         $out = FormatJson::encode( $raw, "\t", FormatJson::ALL_OK );
 
         foreach ( self::JOIN_LINE_FIELDS as $term ) {

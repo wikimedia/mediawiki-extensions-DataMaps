@@ -200,7 +200,7 @@ class ConvertMaps extends Maintenance {
         }
 
         // Create a new object that will contain the output
-        $dmData = new stdclass();
+        $dmData = new stdClass();
         // Set schema
         $schemaProvider = MediaWikiServices::getInstance()->getService( SchemaProvider::SERVICE_NAME );
         $dmData->{'$schema'} = $schemaProvider->makePublicUrl( 'v17' );
@@ -238,8 +238,8 @@ class ConvertMaps extends Maintenance {
         $dmData->image = $fmData->mapImage;
 
         // Create group and marker lists ahead of time to simplify initialisation
-        $dmData->groups = new stdclass();
-        $dmData->markers = new stdclass();
+        $dmData->groups = new stdClass();
+        $dmData->markers = new stdClass();
 
         // Convert categories into groups
         $categoryMap = [];
@@ -250,7 +250,7 @@ class ConvertMaps extends Maintenance {
             // Memorise the category ID so markers can be mapped later
             $categoryMap[$fmCategoryData->id] = $dmGroupName;
             // Create a new object that will house the group
-            $dmGroupData = new stdclass();
+            $dmGroupData = new stdClass();
             $dmData->groups->$dmGroupName = $dmGroupData;
             // Initialise the marker list
             $dmData->markers->$dmGroupName = [];
@@ -281,7 +281,7 @@ class ConvertMaps extends Maintenance {
             // Get group name
             $dmGroupName = $categoryMap[$fmMarkerData->categoryId];
             // Create a new object that will house the marker
-            $dmMarkerData = new stdclass();
+            $dmMarkerData = new stdClass();
             $dmData->markers->$dmGroupName[] = $dmMarkerData;
             // Map ID if given
             if ( isset( $fmMarkerData->id ) && !empty( $fmMarkerData->id ) ) {
