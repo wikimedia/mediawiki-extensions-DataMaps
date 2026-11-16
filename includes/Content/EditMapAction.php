@@ -46,7 +46,7 @@ class EditMapAction extends FormlessAction {
         $out->disableClientCache();
 
         // Set up page title and revision ID
-        $out->setPageTitle( wfMessage( 'editing', $article->getTitle()->getPrefixedText() ) );
+        $out->setPageTitleMsg( wfMessage( 'editing', $article->getTitle()->getPrefixedText() ) );
         $out->setRevisionId( $req->getInt( 'oldid', $article->getRevIdFetched() ) );
 
         // Check if VE can be used on this page
